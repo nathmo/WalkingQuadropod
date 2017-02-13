@@ -1,2 +1,2 @@
 # WalkingQuadropod
-code to coordinate walk on a quadruped Robot like a spider
+code pour faire marcher (au propre comme au figuré) un robot quadrupede piloter par un arduino UNO
