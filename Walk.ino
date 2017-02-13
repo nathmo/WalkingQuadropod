@@ -138,6 +138,7 @@ void setup()
 //YOUR CODE HERE
 void loop()
 {
+  TestWalk();
   delay(3000);
 }
 //STOP HERE, YOUR CODE UP THERE
@@ -461,7 +462,35 @@ void Stand()
 
 void TestWalk()
 {
-  MoveXY()
+  MoveXY(70,0);
+  Genoux2MV(alpha);
+  Patte2MV(beta);
+  Hanche2MV(gamma);
+
+  MoveXY(0,70);
+  Genoux4MV(alpha);
+  Patte4MV(beta);
+  Hanche4MV(gamma);
+  
+  MoveXY(70,70);
+  Hanche1MV(gamma);
+  Genoux1MV(alpha);
+  Patte1MV(beta);
+  
+  MoveXY(20,20);
+  Hanche3MV(gamma);
+  Genoux3MV(alpha);
+  Patte3MV(beta);
+  
+  MoveXY(0,70);
+  Genoux2MV(alpha);
+  Patte2MV(beta);
+  Hanche2MV(gamma);
+
+  MoveXY(70,0);
+  Genoux4MV(alpha);
+  Patte4MV(beta);
+  Hanche4MV(gamma);
 }
 
 void MoveXY(int X,int Y)
