@@ -19,20 +19,26 @@
     3.measure real sites and set to real_site[4][3], make and run
     4.comment VERIFY, make and run
   The document describes in detail how to operate.
+  
+  Dont forget to set the baudrate to 115200 and set the endline to "newline" in the terminal
+  
+  
    ---------------------------------------------------------------------------*/
 
 // modified by Regis for spider project
+// Remodified by Nathann for Quadropod project
+
 
 /* Includes ------------------------------------------------------------------*/
 #include <Servo.h>    //to define and control servos
-#include "FlexiTimer2.h"//to set a timer to manage all servos
+#include "FlexiTimer2.h"//to set a timer to manage all servos (dont include a library but directly the files)
 /* Servos --------------------------------------------------------------------*/
 //define 12 servos for 4 legs
 Servo servo[4][3];
 //define servos' ports
-const int servo_pin[4][3] = { {2, 6, 10}, {3, 7, 11}, {4, 8, 12}, {5, 9, 13} };
+const int servo_pin[4][3] = { {2, 6, 10}, {3, 7, 11}, {4, 8, 12}, {5, 9, 13} }; //Set probably right
 /* Size of the robot ---------------------------------------------------------*/
-const float length_a = 55;
+const float length_a = 55; //Need to be Tuned
 const float length_b = 77.5;
 const float length_c = 27.5;
 const float length_side = 71;
@@ -80,6 +86,8 @@ void setup()
   //start serial for debug
   Serial.begin(115200);
   Serial.println("Robot starts initialization");
+  // reserve 200 bytes for the inputString:
+  inputString.reserve(200);
   //initialize default parameter
   set_site(0, x_default - x_offset, y_start + y_step, z_boot);
   set_site(1, x_default - x_offset, y_start + y_step, z_boot);
@@ -133,32 +141,32 @@ void loop()
 {
   if (stringComplete) {
     Serial.println(inputString);
-    if (inputString == "WalkF")
+    if (inputString == "WalkF\n")
     {
       Serial.println("walking forward");
       step_forward(5);
     }
-    if (inputString == "WalkB")
+    if (inputString == "WalkB\n")
     {
       Serial.println("walking backward");
       step_back(5);
     }
-    if (inputString == "Stand")
+    if (inputString == "Stand\n")
     {
       Serial.println("Stand");
       stand();
     }
-    if (inputString == "left")
+    if (inputString == "left\n")
     {
       Serial.println("turning left");
       turn_left(5);
     }
-    if (inputString == "right")
+    if (inputString == "right\n")
     {
       Serial.println("turning right");
       turn_right(5);
     }
-    if (inputString == "Sit")
+    if (inputString == "Sit\n")
     {
     Serial.println("Who is a good boy ?");
     sit();
