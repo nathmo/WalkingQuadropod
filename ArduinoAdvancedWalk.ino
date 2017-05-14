@@ -26,23 +26,23 @@
    ---------------------------------------------------------------------------*/
 
 // modified by Regis for spider project
-// Remodified by Nathann for Quadropod project
+// Remodified by Nathann for Quadropod project (http://nathann.ch/)
 
 
 /* Includes ------------------------------------------------------------------*/
 #include <Servo.h>    //to define and control servos
-#include "FlexiTimer2.h"//to set a timer to manage all servos (dont include a library but directly the files)
+#include "FlexiTimer2.h"//to set a timer to manage all servos (dont include a library but directly the files)    <> = include library     "" = include File
 /* Servos --------------------------------------------------------------------*/
 //define 12 servos for 4 legs
 Servo servo[4][3];
 //define servos' ports
 const int servo_pin[4][3] = { {2, 6, 10}, {3, 7, 11}, {4, 8, 12}, {5, 9, 13} }; //Set probably right
 /* Size of the robot ---------------------------------------------------------*/
-const float length_a = 55; //Need to be Tuned
-const float length_b = 77.5;
-const float length_c = 27.5;
-const float length_side = 71;
-const float z_absolute = -28;
+const float length_a = 100; //Need to be Tuned
+const float length_b = 250;
+const float length_c = 140;
+const float length_side = 180;
+const float z_absolute = -50;
 /* Constants for movement ----------------------------------------------------*/
 const float z_default = -50, z_up = -30, z_boot = z_absolute;
 const float x_default = 62, x_offset = 0;
@@ -108,6 +108,13 @@ void setup()
   servo_attach();
   Serial.println("Servos initialized");
   Serial.println("Robot initialization Complete");
+  Serial.println("List of commands : ");
+  Serial.println("WalkF");
+  Serial.println("WalkB");
+  Serial.println("Stand");
+  Serial.println("left");
+  Serial.println("right");
+  Serial.println("Sit");
 }
 
 
