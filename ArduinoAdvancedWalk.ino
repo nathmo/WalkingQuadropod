@@ -2,32 +2,29 @@
   - Project: Remote control Crawling robot
   - Author:  panerqiang@sunfounder.com
   - Date:  2015/1/27
+  - Last Edit:  2017/5/14
+  - modified by Regis for spider project
+  - Remodified by Nathann for Quadropod project (http://nathann.ch/)
    -----------------------------------------------------------------------------
-  - Overview
-  - This project was written for the Crawling robot desigened by Sunfounder.
-    This version of the robot has 4 legs, and each leg is driven by 3 servos.
-  This robot is driven by a Ardunio Nano Board with an expansion Board.
-  We recommend that you view the product documentation before using.
-  - Request
-  - This project requires some library files, which you can find in the head of
-    this file. Make sure you have installed these files.
-  - How to
-  - Before use,you must to adjust the robot,in order to make it more accurate.
-    - Adjustment operation
-    1.uncomment ADJUST, make and run
-    2.comment ADJUST, uncomment VERIFY
-    3.measure real sites and set to real_site[4][3], make and run
-    4.comment VERIFY, make and run
-  The document describes in detail how to operate.
+  This program allow control of an quad leg robot with 3 servo on each leg 
+  The comamnd are send thought a terminal and the robot execute them.
+  
+  It currently support the following commands :
+  
+  A definition of the part coresponding for the siz of robot constantante need to be added
+  
+  "WalkF"  =  walk forwanrd
+  "WalkB"  =  walk backward
+  "Stand"  =  Stand
+  "left"   =  Turn Left
+  "right"  =  Turn Right
+  "Sit"    =  Sit like a good boy
+  
   
   Dont forget to set the baudrate to 115200 and set the endline to "newline" in the terminal
   
   
    ---------------------------------------------------------------------------*/
-
-// modified by Regis for spider project
-// Remodified by Nathann for Quadropod project (http://nathann.ch/)
-
 
 /* Includes ------------------------------------------------------------------*/
 #include <Servo.h>    //to define and control servos
@@ -181,8 +178,10 @@ void loop()
     // clear the string:
     inputString = "";
     stringComplete = false;
-    delay(1000);
+    delay(2000);
+    stand();
   }
+//  Old routine to test the robot function
 //  Serial.println("Stand");
 //  stand();
 //  delay(2000);
